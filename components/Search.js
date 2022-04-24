@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import SearchResults from "./SearchResults";
 
-function Search() {
+export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -44,5 +44,3 @@ function Search() {
     </div>
   );
 }
-
-export default Search;

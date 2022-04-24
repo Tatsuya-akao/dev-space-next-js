@@ -11,6 +11,7 @@ function CategoryList({ categories }) {
           <Link
             key={category}
             href={`/blog/category/${category.toLowerCase()}`}
+            passHref
           >
             <li className="p-4 cursor-pointer hover:bg-gray-50">{category}</li>
           </Link>

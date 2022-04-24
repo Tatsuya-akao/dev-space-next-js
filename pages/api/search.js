@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-export default (req, res) => {
+export default function handler(req, res) {
   let posts;
 
   if (process.env.NODE_ENV === "production") {
@@ -32,10 +32,10 @@ export default (req, res) => {
 
   const results = posts.filter(
     ({ frontmatter: { title, excerpt, category } }) =>
-      [title, excerpt, category].some((field) =>
-        field.toLowerCase().includes(query)
-      )
+      title.toLowerCase().indexOf(query) != -1 ||
+      excerpt.toLowerCase().indexOf(query) != -1 ||
+      category.toLowerCase().indexOf(query) != -1
   );
 
   res.status(200).json(JSON.stringify({ results }));
-};
+}
